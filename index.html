@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Playground</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="w-96 max-w-full my-8 mx-auto">
+        <h1 class="text-2xl mb-4">JS Playground</h1>
+        <form>
+            <textarea class="w-full rounded-lg border border-sky-700 p-2" id="programInput" name="programInput" cols="30" rows="5"></textarea>
+            <button class="text-white w-full rounded-lg bg-sky-700 py-2" id="run">Run</button>
+        </form>
+
+        <div class="hidden" id="outputWrapper">
+            <h2 class="text-xl my-4">Output</h2>
+            <div class="bg-gray-200 rounded-lg p-2" id="output"></div>
+        </div>
+        
+    </div>
+
+    <script>
+        const incoming = document.getElementById('programInput');
+        const runButton = document.getElementById('run');
+        const outputTarget = document.getElementById('output');
+        const outputWrapper = document.getElementById('outputWrapper');
+
+        runButton.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            // Transform the input with a function here
+            const output = replace(incoming.value, 'h', '!');
+
+            outputTarget.innerHTML = output;
+            outputWrapper.classList.remove('hidden');
+        });
+
+        // Write your functions here
+        function upperCase(str) {
+            return str.toUpperCase();
+        }
+
+        function replace(str, search, replace) {
+            return str.replaceAll(search, replace);
+        }
+    </script>
+</body>
+</html>
