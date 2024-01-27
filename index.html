@@ -31,7 +31,7 @@
             e.preventDefault();
 
             // Transform the input with a function here
-            const output = replace(incoming.value, 'h', '!');
+            const output = textToMorse(incoming.value);
 
             outputTarget.innerHTML = output;
             outputWrapper.classList.remove('hidden');
@@ -45,6 +45,28 @@
         function replace(str, search, replace) {
             return str.replaceAll(search, replace);
         }
+
+        const morseLibrary = {
+            "a": ".-",
+            "b": "-...",
+            "c": "-.-.",
+            "d": "-.."
+        }
+
+        function textToMorse(str) {
+            const strArray = str.split("");
+            let formattedWord = "";
+            strArray.forEach((char) => {
+                const code = morseLibrary[char];
+                console.log(code);
+
+                formattedWord += code + "&nbsp;&nbsp;&nbsp;";
+            })
+
+            return formattedWord;
+        }
+
+        
     </script>
 </body>
 </html>
